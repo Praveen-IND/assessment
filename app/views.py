@@ -117,11 +117,13 @@ class get_put_delete(APIView):
 
 
 class NoteListCreateView(ListCreateAPIView):
+    authentication_classes = [custom_jwt_authentication]
     queryset = Note.objects.all()
     serializer_class = NoteSerializer
 
 
 class NoteDetailView(RetrieveUpdateDestroyAPIView):
+    authentication_classes = [custom_jwt_authentication]
     queryset = Note.objects.all()
     serializer_class = NoteSerializer
     lookup_field = 'note_id' 
